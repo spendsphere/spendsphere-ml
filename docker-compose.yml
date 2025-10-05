@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  ml-service:
+    build: .
+    container_name: spendsphere-ml
+    environment:
+      - OLLAMA_API_URL=http://host.docker.internal:11434
+      - LOG_LEVEL=INFO
+    volumes:
+      - .:/app
+    command: ["python", "src/main.py", "--demo"]

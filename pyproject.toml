@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "spendsphere-ml"
+version = "0.1.0"
+description = "Spendsphere ML service (OCR via Ollama)"
+authors = ["melarozz <you@example.com>"]
+readme = "README.md"
+packages = [{ include = "src" }]
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.13"
+requests = "^2.31.0"
+pydantic = "2.8.2"
+loguru = "^0.7.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.0"
+black = "^24.4.0"
+isort = "^5.13.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
