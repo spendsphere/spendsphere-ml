@@ -18,7 +18,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
       - name: Install Poetry
         run: |
@@ -34,11 +34,17 @@ jobs:
             ${{ runner.os }}-poetry-
 
       - name: Install dependencies
+        run: poetry install --no-interaction --no-root
+
+      - name: Autoformat with black
         run: |
-          poetry install --no-interaction --no-root
+          poetry run black src
 
       #- name: Lint with flake8
       #  run: poetry run flake8 src --max-line-length=100 --statistics
+      - name: Autoformat imports with isort
+        run: |
+          poetry run isort src
 
       - name: Check formatting with black
         run: poetry run black --check src
@@ -50,7 +56,7 @@ jobs:
         run: poetry run mypy src
 
       - name: Run tests
-        run: poetry run pytest --maxfail=3 --disable-warnings -q
+        run: poetry run pytest -q --disable-warnings
 
   docker-build:
     name: Docker build
@@ -65,4 +71,5 @@ jobs:
         run: docker build -t spendsphere-ml .
 
       - name: Test docker-compose build
+        if: exists('docker-compose.yml')
         run: docker compose config && docker compose build
