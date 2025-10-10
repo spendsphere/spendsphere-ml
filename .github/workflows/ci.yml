@@ -52,7 +52,12 @@ jobs:
           poetry run mypy src
 
       - name: Run tests
-        run: poetry run pytest --maxfail=3 --disable-warnings -q
+        run: |
+          if ls tests/*.py > /dev/null 2>&1; then
+            poetry run pytest --maxfail=3 --disable-warnings -q
+          else
+            echo "No tests found — skipping pytest"
+          fi
 
   docker-build:
     name: Docker build
