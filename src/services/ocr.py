@@ -1,5 +1,7 @@
 import requests
+
 from src.core.config import OLLAMA_API_URL
+
 
 def query_ollama(prompt: str, model: str = "llava-mini") -> dict:
     url = f"{OLLAMA_API_URL}/prompt"
