@@ -47,7 +47,9 @@ jobs:
         run: poetry run isort --check-only src
 
       - name: Type check with mypy
-        run: poetry run mypy src
+        run: |
+          poetry run mypy --install-types
+          poetry run mypy src
 
       - name: Run tests
         run: poetry run pytest --maxfail=3 --disable-warnings -q
