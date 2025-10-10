@@ -37,8 +37,8 @@ jobs:
         run: |
           poetry install --no-interaction --no-root
 
-      #- name: Lint with flake8
-      #  run: poetry run flake8 src --max-line-length=100 --statistics
+      - name: Lint with flake8
+        run: poetry run flake8 src --max-line-length=100 --statistics
 
       - name: Check formatting with black
         run: poetry run black --check src
@@ -48,7 +48,7 @@ jobs:
 
       - name: Type check with mypy
         run: |
-          poetry run mypy --install-types
+          poetry run mypy src --install-types --non-interactive
           poetry run mypy src
 
       - name: Run tests

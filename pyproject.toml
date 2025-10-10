@@ -16,7 +16,7 @@ loguru = "^0.7.2"
 python_version = "3.12"
 check_untyped_defs = true
 disallow_untyped_defs = false
-ignore_missing_imports = true
+ignore_missing_imports = false
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.0"
