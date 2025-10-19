@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Name": {"type": "string"},
+          "Price": {"type": ["string", "number"]},
+          "Description": {"type": "string"},
+          "Category": {"type": "string"}
+        },
+        "required": ["Name", "Price", "Description", "Category"]
+      }
+    }
+  },
+  "required": ["items"]
+}
