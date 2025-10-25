@@ -1,0 +1,59 @@
+{
+  "type": "object",
+  "properties": {
+    "overall_assessment": {
+      "type": "string",
+      "description": "Overall financial health assessment"
+    },
+    "key_findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "category": {"type": "string"},
+          "finding": {"type": "string"},
+          "impact": {"type": "string", "enum": ["positive", "negative", "neutral"]},
+          "priority": {"type": "string", "enum": ["high", "medium", "low"]}
+        }
+      }
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "category": {"type": "string"},
+          "action": {"type": "string"},
+          "expected_impact": {"type": "string"},
+          "implementation_difficulty": {"type": "string", "enum": ["easy", "medium", "hard"]},
+          "timeline": {"type": "string"}
+        }
+      }
+    },
+    "risk_alerts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "risk_type": {"type": "string"},
+          "description": {"type": "string"},
+          "severity": {"type": "string", "enum": ["high", "medium", "low"]},
+          "mitigation_strategy": {"type": "string"}
+        }
+      }
+    },
+    "goal_progress": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "goal": {"type": "string"},
+          "current_status": {"type": "string"},
+          "next_steps": {"type": "string"},
+          "estimated_completion": {"type": "string"}
+        }
+      }
+    }
+  },
+  "required": ["overall_assessment", "key_findings", "recommendations"]
+}

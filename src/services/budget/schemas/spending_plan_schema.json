@@ -1,0 +1,38 @@
+{
+  "type": "object",
+  "properties": {
+    "target_savings_rate": {"type": "number"},
+    "current_savings_rate": {"type": "number"},
+    "recommended_budget": {
+      "type": "object",
+      "properties": {
+        "essential_expenses": {"type": "object"},
+        "discretionary_expenses": {"type": "object"},
+        "savings_allocation": {"type": "object"},
+        "debt_payments": {"type": "object"}
+      }
+    },
+    "expense_reductions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "category": {"type": "string"},
+          "current_amount": {"type": "number"},
+          "recommended_amount": {"type": "number"},
+          "reduction_percentage": {"type": "number"},
+          "implementation_tips": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "monthly_impact": {
+      "type": "object",
+      "properties": {
+        "projected_savings": {"type": "number"},
+        "cash_flow_improvement": {"type": "number"},
+        "debt_reduction_timeline": {"type": "string"}
+      }
+    }
+  },
+  "required": ["target_savings_rate", "recommended_budget", "expense_reductions"]
+}

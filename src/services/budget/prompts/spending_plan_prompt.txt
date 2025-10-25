@@ -1,0 +1,12 @@
+Create a detailed spending plan to help the user achieve their target savings rate of {target_savings_rate}%.
+
+Analyze their current spending patterns and identify specific, realistic reductions in various categories. Provide practical tips for implementing these changes.
+
+Consider:
+- Essential vs discretionary expenses
+- Opportunities for optimization
+- Behavioral changes that can lead to sustainable savings
+- Balance between austerity and quality of life
+
+The plan should be achievable and tailored to their current financial situation.
+Answer STRICTLY AND ONLY in RUSSIAN.
