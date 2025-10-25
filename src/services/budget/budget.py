@@ -160,11 +160,14 @@ class BudgetAnalysisService:
         messages = [
             {
                 "role": "system",
-                "content": "You are a expert financial advisor with deep knowledge of personal finance, budgeting, and wealth building. Provide practical, actionable advice.",
+                "content": "You are a expert financial advisor with deep knowledge "
+                           "of personal finance, budgeting, and wealth building. "
+                           "Provide practical, actionable advice.",
             },
             {
                 "role": "user",
-                "content": f"{prompt}\n\nFinancial Context:\n{json.dumps(context, indent=2, ensure_ascii=False)}",
+                "content": f"{prompt}\n\nFinancial Context:"
+                           f"\n{json.dumps(context, indent=2, ensure_ascii=False)}",
             },
         ]
 
@@ -183,7 +186,7 @@ class BudgetAnalysisService:
             # Add calculated metrics to the result
             analysis_result["financial_metrics"] = metrics
             return analysis_result
-        except json.JSONDecodeError as e:
+        except json.JSONDecodeError:
             logger.error(f"Failed to parse JSON response: {content_str}")
             raise
 
@@ -214,7 +217,9 @@ class BudgetAnalysisService:
         messages = [
             {
                 "role": "system",
-                "content": "You are a budgeting expert. Create realistic, achievable spending plans that help users reach their financial goals.",
+                "content": "You are a budgeting expert. "
+                           "Create realistic, achievable spending plans "
+                           "that help users reach their financial goals.",
             },
             {
                 "role": "user",
@@ -252,7 +257,9 @@ class BudgetAnalysisService:
         messages = [
             {
                 "role": "system",
-                "content": "You are a financial analyst. Identify trends, improvements, and areas of concern in financial data across time periods.",
+                "content": "You are a financial analyst. "
+                           "Identify trends, improvements, and areas of concern in "
+                           "financial data across time periods.",
             },
             {
                 "role": "user",
