@@ -161,13 +161,13 @@ class BudgetAnalysisService:
             {
                 "role": "system",
                 "content": "You are a expert financial advisor with deep knowledge "
-                           "of personal finance, budgeting, and wealth building. "
-                           "Provide practical, actionable advice.",
+                "of personal finance, budgeting, and wealth building. "
+                "Provide practical, actionable advice.",
             },
             {
                 "role": "user",
                 "content": f"{prompt}\n\nFinancial Context:"
-                           f"\n{json.dumps(context, indent=2, ensure_ascii=False)}",
+                f"\n{json.dumps(context, indent=2, ensure_ascii=False)}",
             },
         ]
 
@@ -218,8 +218,8 @@ class BudgetAnalysisService:
             {
                 "role": "system",
                 "content": "You are a budgeting expert. "
-                           "Create realistic, achievable spending plans "
-                           "that help users reach their financial goals.",
+                "Create realistic, achievable spending plans "
+                "that help users reach their financial goals.",
             },
             {
                 "role": "user",
@@ -258,8 +258,8 @@ class BudgetAnalysisService:
             {
                 "role": "system",
                 "content": "You are a financial analyst. "
-                           "Identify trends, improvements, and areas of concern in "
-                           "financial data across time periods.",
+                "Identify trends, improvements, and areas of concern in "
+                "financial data across time periods.",
             },
             {
                 "role": "user",
