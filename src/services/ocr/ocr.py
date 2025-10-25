@@ -1,7 +1,8 @@
 import base64
 import json
-import requests
 from pathlib import Path
+
+import requests
 
 OLLAMA_API_URL = "http://localhost:11434"
 
