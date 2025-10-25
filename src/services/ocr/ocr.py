@@ -1,7 +1,8 @@
 import base64
 import json
-import requests
 from pathlib import Path
+
+import requests
 
 OLLAMA_API_URL = "http://localhost:11434"
 
@@ -16,7 +17,9 @@ def load_prompt(path: str) -> str:
     return Path(path).read_text(encoding="utf-8").strip()
 
 
-def extract_text_from_image(image_path: str, model: str, schema_path: str, prompt_path: str) -> dict:
+def extract_text_from_image(
+    image_path: str, model: str, schema_path: str, prompt_path: str
+) -> dict:
     """
     Extract structured text (Name, Price, Description) from an image using Ollama multimodal model.
     Returns a Python dict.
@@ -29,20 +32,9 @@ def extract_text_from_image(image_path: str, model: str, schema_path: str, promp
     schema = load_json(schema_path)
     prompt = load_prompt(prompt_path)
 
-    messages = [
-        {
-            "role": "user",
-            "content": prompt,
-            "images": [image_b64]
-        }
-    ]
+    messages = [{"role": "user", "content": prompt, "images": [image_b64]}]
 
-    payload = {
-        "model": model,
-        "messages": messages,
-        "stream": False,
-        "format": schema
-    }
+    payload = {"model": model, "messages": messages, "stream": False, "format": schema}
 
     resp = requests.post(url, json=payload)
     resp.raise_for_status()
@@ -51,7 +43,13 @@ def extract_text_from_image(image_path: str, model: str, schema_path: str, promp
     return json.loads(content_str)
 
 
-def categorize_items(ocr_result: dict, categories: list[str], model: str, schema_path: str, prompt_path: str) -> dict:
+def categorize_items(
+    ocr_result: dict,
+    categories: list[str],
+    model: str,
+    schema_path: str,
+    prompt_path: str,
+) -> dict:
     """
     Assign a category from the provided list to each OCR item using Ollama.
     Returns a Python dict with 'Category' field added.
@@ -72,16 +70,13 @@ def categorize_items(ocr_result: dict, categories: list[str], model: str, schema
         {"role": "system", "content": "You are a categorization assistant."},
         {
             "role": "user",
-            "content": f"{prompt}\n\nAvailable categories: {categories}\n\nItems:\n{json.dumps(ocr_result, indent=2, ensure_ascii=False)}"
-        }
+            "content": f"{prompt}\n\nAvailable categories: "
+            f"{categories}\n\n"
+            f"Items:\n{json.dumps(ocr_result, indent=2, ensure_ascii=False)}",
+        },
     ]
 
-    payload = {
-        "model": model,
-        "messages": messages,
-        "stream": False,
-        "format": schema
-    }
+    payload = {"model": model, "messages": messages, "stream": False, "format": schema}
 
     resp = requests.post(url, json=payload)
     resp.raise_for_status()
