@@ -145,8 +145,8 @@ class BudgetAnalysisService:
         metrics = self.calculate_financial_metrics(financial_data)
 
         # Load schema and prompt
-        schema = self.load_json("schemas/budget_analysis_schema.json")
-        prompt = self.load_prompt("prompts/budget_analysis_prompt.txt")
+        schema = self.load_json("./schemas/budget_analysis_schema.json")
+        prompt = self.load_prompt("./prompts/budget_analysis_prompt.txt")
 
         # Prepare context for AI
         context = {
@@ -203,8 +203,8 @@ class BudgetAnalysisService:
         Returns:
             Dict containing optimized spending plan
         """
-        schema = self.load_json("schemas/spending_plan_schema.json")
-        prompt = self.load_prompt("prompts/spending_plan_prompt.txt")
+        schema = self.load_json("./schemas/spending_plan_schema.json")
+        prompt = self.load_prompt("./prompts/spending_plan_prompt.txt")
 
         metrics = self.calculate_financial_metrics(financial_data)
 
@@ -243,8 +243,8 @@ class BudgetAnalysisService:
         """
         Compare financial data between two periods and analyze trends.
         """
-        schema = self.load_json("schemas/period_comparison_schema.json")
-        prompt = self.load_prompt("prompts/period_comparison_prompt.txt")
+        schema = self.load_json("./schemas/period_comparison_schema.json")
+        prompt = self.load_prompt("./prompts/period_comparison_prompt.txt")
 
         current_metrics = self.calculate_financial_metrics(current_data)
         previous_metrics = self.calculate_financial_metrics(previous_data)
