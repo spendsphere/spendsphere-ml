@@ -120,3 +120,4 @@ if __name__ == "__main__":
         # TODO: Добавить логику для Production режима (например, запуск FastAPI сервера)
         logger.info("Сервис запущен в Production режиме (функционал пока не реализован).")
         logger.info("Используйте 'python src/main.py --demo' для запуска демонстрации.")
+
