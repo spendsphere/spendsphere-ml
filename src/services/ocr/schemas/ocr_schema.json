@@ -28,9 +28,14 @@
               }
             ],
             "description": "Дата транзакции в формате YYYY-MM-DD или 'N/A', если определить невозможно"
+          },
+          "Type": {
+            "type": "string",
+            "enum": ["income", "expense"],
+            "description": "Тип транзакции: доход (income) или расход (expense)"
           }
         },
-        "required": ["Name", "Price", "Description", "TransactionDate"],
+        "required": ["Name", "Price", "Description", "TransactionDate", "Type"],
         "additionalProperties": false
       }
     }
