@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 import requests
 
-OLLAMA_API_URL = "http://localhost:11434"
+OLLAMA_API_URL = "http://ollama:11434"
 
 
 def load_json(path: str) -> dict:
