@@ -1,4 +1,5 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -6,12 +7,12 @@
       "items": {
         "type": "object",
         "properties": {
-          "Name": {"type": "string"},
-          "Price": {"type": ["string", "number"]},
-          "Description": {"type": "string"},
-          "Category": {"type": "string"}
+          "Category": {
+            "type": "string"
+          }
         },
-        "required": ["Name", "Price", "Description", "Category"]
+        "required": ["Category"],
+        "additionalProperties": false
       }
     }
   },
