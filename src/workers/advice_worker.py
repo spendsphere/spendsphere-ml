@@ -13,7 +13,7 @@ RABBITMQ_HOST = os.getenv("RABBITMQ_HOST", "localhost")
 RABBITMQ_USER = os.getenv("RABBITMQ_USER", "guest")
 RABBITMQ_PASS = os.getenv("RABBITMQ_PASS", "guest")
 
-ADVICE_MODEL = os.getenv("ADVICE_MODEL", "qwen3:0.6b")
+ADVICE_MODEL = os.getenv("ADVICE_MODEL", "qwen3:14b")
 
 ADVICE_SCHEMA = BASE_DIR / "src/services/advice/schemas/advice_schema.json"
 ADVICE_PROMPT = BASE_DIR / "src/services/advice/prompts/advice_prompt.txt"
