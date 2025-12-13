@@ -1,3 +1,2 @@
 Extract text from the following image.
 Return structured data according to the given schema.
-If a field is missing, use an empty string.
