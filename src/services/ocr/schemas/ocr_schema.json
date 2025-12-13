@@ -11,7 +11,8 @@
             "type": "string"
           },
           "Price": {
-            "type": ["string", "number"]
+            "type": "number",
+            "minimum" 0
           },
           "Description": {
             "type": "string"
@@ -35,7 +36,7 @@
             "description": "Тип транзакции: доход (income) или расход (expense)"
           }
         },
-        "required": ["Name", "Price", "Description", "TransactionDate", "Type"],
+        "required": ["Name", "Price", "Description", "TransactionDate", "Type", "TransactionType"],
         "additionalProperties": false
       }
     }
