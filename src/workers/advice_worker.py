@@ -10,8 +10,8 @@ logger = logging.logger
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 RABBITMQ_HOST = os.getenv("RABBITMQ_HOST", "localhost")
-RABBITMQ_USER = os.getenv("RABBITMQ_USER", "rmuser")
-RABBITMQ_PASS = os.getenv("RABBITMQ_PASS", "rmpassword")
+RABBITMQ_USER = os.getenv("RABBITMQ_USER", "guest")
+RABBITMQ_PASS = os.getenv("RABBITMQ_PASS", "guest")
 
 ADVICE_MODEL = os.getenv("ADVICE_MODEL", "qwen3:0.6b")
 

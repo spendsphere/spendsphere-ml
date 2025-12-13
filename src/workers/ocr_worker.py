@@ -9,8 +9,8 @@ from src.services.ocr.ocr import extract_text_from_base64_image, categorize_item
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 RABBITMQ_HOST = os.getenv("RABBITMQ_HOST", "localhost")
-RABBITMQ_USER = os.getenv("RABBITMQ_USER", "rmuser")
-RABBITMQ_PASS = os.getenv("RABBITMQ_PASS", "rmpassword")
+RABBITMQ_USER = os.getenv("RABBITMQ_USER", "guest")
+RABBITMQ_PASS = os.getenv("RABBITMQ_PASS", "guest")
 
 OCR_MODEL = os.getenv("OCR_MODEL", "deepseek-ocr:latest")
 BUDGET_MODEL = os.getenv("BUDGET_MODEL", "qwen3:0.6b")
