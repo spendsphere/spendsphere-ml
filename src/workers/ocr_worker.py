@@ -12,8 +12,8 @@ RABBITMQ_HOST = os.getenv("RABBITMQ_HOST", "localhost")
 RABBITMQ_USER = os.getenv("RABBITMQ_USER", "guest")
 RABBITMQ_PASS = os.getenv("RABBITMQ_PASS", "guest")
 
-OCR_MODEL = os.getenv("OCR_MODEL", "deepseek-ocr:latest")
-BUDGET_MODEL = os.getenv("BUDGET_MODEL", "qwen3:0.6b")
+OCR_MODEL = os.getenv("OCR_MODEL", "qwen3-vl:8b")
+BUDGET_MODEL = os.getenv("BUDGET_MODEL", "qwen3:14b")
 
 OCR_SCHEMA = BASE_DIR / "src/services/ocr/schemas/ocr_schema.json"
 OCR_PROMPT = BASE_DIR / "src/services/ocr/prompts/ocr_prompt.txt"
