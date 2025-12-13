@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "spendsphere-ml"
 version = "0.1.0"
-description = "Spendsphere ML service (OCR via Ollama)"
-authors = ["melarozz <you@example.com>"]
+description = "Spendsphere ML service (OCR via Ollama and Advice Worker)"
+authors = ["melarozz <melarozz18@gmail.com>"]
 readme = "README.md"
 packages = [{ include = "src" }]
 
@@ -10,20 +10,21 @@ packages = [{ include = "src" }]
 python = ">=3.12,<3.13"
 requests = "^2.31.0"
 pydantic = "2.8.2"
-loguru = "^0.7.2"
+loguru = "^0.7.3"
+pika = "^1.3.1"  # Добавлен для RabbitMQ
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.4.2"
+black = "^24.10.0"
+isort = "^5.13.2"
+flake8 = "^7.3.0"
+mypy = "^1.19.0"
 
 [tool.mypy]
 python_version = "3.12"
 check_untyped_defs = true
 disallow_untyped_defs = false
 ignore_missing_imports = false
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.3.0"
-black = "^24.4.0"
-isort = "^5.13.2"
-flake8 = "^7.1.0"
-mypy = "^1.18.2"
 
 [build-system]
 requires = ["poetry-core"]

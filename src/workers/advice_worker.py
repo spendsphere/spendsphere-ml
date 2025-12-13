@@ -1,10 +1,11 @@
 import json
 import os
 import pika
-import tempfile
 from pathlib import Path
-from src.core.logging import logger
-from src.services.advice.llm_utils import generate_advice  # предполагаемая функция
+from src.services.advice.llm_utils import generate_advice  # убедись, что llm_utils есть в advice
+from src.core import logging  # импорт logger через пакет
+
+logger = logging.logger
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
@@ -29,7 +30,7 @@ def start_advice_worker():
         connection = pika.BlockingConnection(
             pika.ConnectionParameters(
                 host=RABBITMQ_HOST,
-                port=5673,
+                port=5672,
                 credentials=credentials,
                 heartbeat=60000
             )
@@ -44,7 +45,6 @@ def start_advice_worker():
 
     def process_task(ch, method, properties, body):
         logger.info("RAW advice message received")
-
         task_id = "N/A"
 
         try:
@@ -66,15 +66,13 @@ def start_advice_worker():
                 prompt_path=str(ADVICE_PROMPT)
             )
 
-            logger.info(
-                f"[{task_id}] Advice result: {json.dumps(advice_result, ensure_ascii=False)}"
-            )
+            logger.info(f"[{task_id}] Advice result: {json.dumps(advice_result, ensure_ascii=False)}")
 
             final_result = {
                 "task_id": task_id,
                 "status": "SUCCESS",
                 "goal": goal,
-                "advice": advice_result["advice"]
+                "advice": advice_result.get("advice", [])
             }
 
         except Exception as e:
@@ -87,6 +85,7 @@ def start_advice_worker():
             ch.basic_nack(method.delivery_tag)
             return
 
+        # --- Publish result ---
         channel.basic_publish(
             exchange="",
             routing_key=ADVICE_RESULTS_QUEUE,

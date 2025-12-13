@@ -66,7 +66,7 @@ def start_ocr_worker():
         connection = pika.BlockingConnection(
             pika.ConnectionParameters(
                 host=RABBITMQ_HOST,
-                port=5673,
+                port=5672,
                 credentials=credentials,
                 heartbeat=60000
             )
