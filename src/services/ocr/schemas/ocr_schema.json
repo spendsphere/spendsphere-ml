@@ -1,4 +1,5 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -6,11 +7,31 @@
       "items": {
         "type": "object",
         "properties": {
-          "Name": {"type": "string"},
-          "Price": {"type": ["string", "number"]},
-          "Description": {"type": "string"}
+          "Name": {
+            "type": "string"
+          },
+          "Price": {
+            "type": ["string", "number"]
+          },
+          "Description": {
+            "type": "string"
+          },
+          "TransactionDate": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "string",
+                "enum": ["N/A"]
+              }
+            ],
+            "description": "Дата транзакции в формате YYYY-MM-DD или 'N/A', если определить невозможно"
+          }
         },
-        "required": ["Name", "Price", "Description"]
+        "required": ["Name", "Price", "Description", "TransactionDate"],
+        "additionalProperties": false
       }
     }
   },

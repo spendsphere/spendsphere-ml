@@ -17,17 +17,16 @@ def load_prompt(path: str) -> str:
     return Path(path).read_text(encoding="utf-8").strip()
 
 
-def extract_text_from_image(
-    image_path: str, model: str, schema_path: str, prompt_path: str
+def extract_text_from_base64_image(
+        image_b64: str, model: str, schema_path: str, prompt_path: str
 ) -> dict:
     """
-    Extract structured text (Name, Price, Description) from an image using Ollama multimodal model.
-    Returns a Python dict.
+    Extract structured text (Name, Price, Description) from an image encoded in Base64
+    using Ollama multimodal model. Returns a Python dict.
     """
     url = f"{OLLAMA_API_URL}/api/chat"
 
-    with open(image_path, "rb") as f:
-        image_b64 = base64.b64encode(f.read()).decode("utf-8")
+    # Теперь мы принимаем image_b64 напрямую, без чтения файла
 
     schema = load_json(schema_path)
     prompt = load_prompt(prompt_path)
