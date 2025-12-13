@@ -12,6 +12,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     curl \
     ca-certificates \
+    unzip \
+    wget \
     && rm -rf /var/lib/apt/lists/*
 
 # --- Poetry ---
@@ -24,12 +26,22 @@ RUN poetry install --no-interaction --no-ansi --no-root
 # --- Copy full project ---
 COPY . /app
 
-# --- Optional: install specific packages if needed ---
-# RUN poetry add pydantic@2.8.2  # if not in pyproject.toml
-
 # --- Ollama environment ---
 ENV OLLAMA_HOST=0.0.0.0
 ENV OLLAMA_MODELS=/root/.ollama/models
 
-# --- Expose port if needed for Ollama API ---
+# --- Expose port for Ollama API ---
 EXPOSE 11434
+
+# --- Install Ollama CLI ---
+RUN curl -sSfL https://ollama.com/install.sh | bash
+
+# --- Download required models (example) ---
+RUN ollama pull deepseek-ocr:latest
+RUN ollama pull qwen3:0.6b
+
+# --- Entrypoint: run Ollama in background and then ML worker ---
+CMD ["sh", "-c", "\
+    ollama serve --host $OLLAMA_HOST & \
+    poetry run python src/main.py --demo \
+"]
