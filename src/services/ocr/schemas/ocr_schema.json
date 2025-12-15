@@ -11,8 +11,7 @@
             "type": "string"
           },
           "Price": {
-            "type": "number",
-            "minimum" 0
+            "type": "number"
           },
           "Description": {
             "type": "string"
