@@ -71,7 +71,7 @@ def start_advice_worker():
             final_result = {
                 "task_id": task_id,
                 "status": "SUCCESS",
-                "goal": goal,
+                "goal": goal.get("name"),
                 "advice": advice_result.get("advice", [])
             }
 
